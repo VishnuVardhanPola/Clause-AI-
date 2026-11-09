@@ -65,7 +65,7 @@ def index_contract(contract_id: str, text: str):
         ))
 
     if vectors:
-        index.upsert(vectors)
+        index.upsert(vectors=vectors)
 
     return len(chunks)
 
@@ -92,7 +92,7 @@ def store_agent_results(contract_id: str, agent_name: str, findings: list):
         ))
 
     if vectors:
-        index.upsert(vectors)
+        index.upsert(vectors=vectors)
 
 # ---------------------------------
 # QUERY SIMILAR CONTENT
@@ -110,3 +110,21 @@ def query_similar_clauses(query_text: str, top_k: int = 5):
         match["metadata"].get("text", "")
         for match in results["matches"]
     ]
+# ---------------------------------
+# STORE FINAL REPORT
+# ---------------------------------
+def store_report(contract_id: str, report_text: str):
+
+    vector = embeddings.embed_query(report_text)
+
+    index.upsert(vectors=[
+        (
+            f"{contract_id}-final-report",
+            vector,
+            {
+                "text": report_text,
+                "type": "final_report",
+                "contract_id": contract_id
+            }
+        )
+    ])

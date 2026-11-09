@@ -11,6 +11,7 @@ Clause AI.env
 # Python cache
 __pycache__/
 *.pyc
+*.py[cod]
 
 # IDE files
 .vscode/

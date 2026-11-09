@@ -1,0 +1,18 @@
+streamlit
+python-dotenv
+
+# AI and LLM
+langgraph
+langchain-core
+langchain-community
+langchain-text-splitters
+google-generativeai
+
+# Vector database and embeddings
+pinecone
+sentence-transformers
+
+# Document processing
+PyPDF2
+python-docx
+reportlab
