@@ -1,3 +1,16 @@
+# Virtual environments
 venv/
 .venv/
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
 Clause AI.env
+
+# Python cache
+__pycache__/
+*.pyc
+
+# IDE files
+.vscode/
